@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Sirupsen/logrus"
 	"github.com/eapache/go-resiliency/retrier"
+	"github.com/sirupsen/logrus"
 )
 
 // priorities maps logrus log levels to syslog severity
@@ -238,7 +238,7 @@ func (hook *Hook) messageFromEntry(entry *logrus.Entry, file string, line int) *
 		Host:     hook.Hostname,
 		Short:    short,
 		Full:     full,
-		Time:     float64(entry.Time.UnixNano()) / 1E9,
+		Time:     float64(entry.Time.UnixNano()) / 1e9,
 		Level:    int32(priorities[entry.Level]),
 		Pid:      hook.pid,
 		Facility: hook.Facility,
